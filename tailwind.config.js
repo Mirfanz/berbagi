@@ -19,10 +19,28 @@ const config = {
     heroui({
       themes: {
         light: {
-          colors: {},
+          colors: {
+            primary: {
+              DEFAULT: "#278783",
+              foreground: "#ffffff",
+            },
+            secondary: {
+              DEFAULT: "#607EBC",
+              foreground: "#ffffff",
+            },
+          },
         },
         dark: {
-          colors: {},
+          colors: {
+            primary: {
+              DEFAULT: "#278783",
+              foreground: "#ffffff",
+            },
+            secondary: {
+              DEFAULT: "##607EBC",
+              foreground: "#ffffff",
+            },
+          },
         },
       },
     }),

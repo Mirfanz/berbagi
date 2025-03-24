@@ -7,14 +7,8 @@ import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
 
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 import { Button } from "@heroui/button";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
-
-export interface ThemeSwitchProps {
-  className?: string;
-  classNames?: SwitchProps["classNames"];
-}
 
 export const ThemeSwitch: FC = () => {
   const { theme, setTheme } = useTheme();

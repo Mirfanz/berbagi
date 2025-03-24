@@ -11,6 +11,11 @@ import { Navbar } from "@/components/navbar";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import Tabbar from "@/components/tabbar";
 
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -55,7 +60,7 @@ export default function RootLayout({
               </div>
               <div className="bgred-400 flex-1 flex flex-col overflow-y-auto">
                 <main className="flex-grow">{children}</main>
-                <footer className="w-full flex items-center justify-center py-3">
+                <footer className="w-full hidden md:flex items-center justify-center py-3">
                   <Link
                     isExternal
                     className="flex items-center gap-1 text-current"

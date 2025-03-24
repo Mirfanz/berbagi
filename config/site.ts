@@ -1,35 +1,42 @@
 export type SiteConfig = typeof siteConfig;
+import {
+  HandRaisedIcon,
+  HeartIcon,
+  HomeIcon,
+  UserIcon,
+} from "@heroicons/react/24/solid";
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
-  navItems: [
+  name: "Berbagi.com",
+  description: "Berikan senyuman yang paling indah untuk saudara kita.",
+  menuItems: [
     {
+      active: /^\/$/,
       label: "Home",
       href: "/",
+      icon: HomeIcon,
     },
     {
-      label: "Docs",
-      href: "/docs",
+      active: /^\/donation$/,
+      label: "Donasi",
+      href: "/donation",
+      icon: HandRaisedIcon,
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      active: /^\/infaq$/,
+      label: "Infaq",
+      href: "/infaq",
+      icon: HeartIcon,
     },
     {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
+      active: /^\/user.*$/,
+      label: "User",
+      href: "/user",
+      icon: UserIcon,
     },
   ],
   links: {
-    github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    github: "https://github.com/mirfanz",
+    instagram: "https://www.instagram.com/mirfanz_",
   },
 };
