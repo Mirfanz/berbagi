@@ -1,16 +1,20 @@
 "use client";
 
-import {
-  AdjustmentsHorizontalIcon,
-  ListBulletIcon,
-} from "@heroicons/react/24/solid";
+import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
-import { Progress } from "@heroui/progress";
-import Image from "next/image";
 import DonationCard from "./donation-card";
+import { useQuery } from "@tanstack/react-query";
+import { Donation as DonationType } from "@/types";
+import axios from "axios";
 
 const Donation = () => {
+  const { data } = useQuery({
+    queryKey: ["donations"],
+    queryFn: async (): Promise<DonationType[]> => {
+      return await axios.get("/api/donation").then((res) => res.data.data);
+    },
+  });
   return (
     <main>
       <div className="flex mb-3 gap-2 bg-primary p-2 sticky top-0 z-10">
@@ -20,7 +24,6 @@ const Donation = () => {
         <Input
           placeholder="Temukan Donasi Yang Diiginkan"
           variant="flat"
-          className=""
           classNames={{
             inputWrapper: "pr-1",
           }}
@@ -33,8 +36,8 @@ const Donation = () => {
       </div>
       <section className="px-2 mt-3">
         <div className="flex flex-col gap-5">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <DonationCard key={"donation-" + i} />
+          {data?.map((item) => (
+            <DonationCard data={item} key={"donation-" + item.id} />
           ))}
           <Button variant="solid" className="mb-3">
             Tampilkan Lainnya

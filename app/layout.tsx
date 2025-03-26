@@ -58,7 +58,7 @@ export default function RootLayout({
                 </div>
                 <Tabbar />
               </div>
-              <div className="bgred-400 flex-1 flex flex-col overflow-y-auto">
+              <div className="flex-1 flex flex-col overflow-y-auto">
                 <main className="flex-grow">{children}</main>
                 <footer className="w-full hidden md:flex items-center justify-center py-3">
                   <Link

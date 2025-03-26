@@ -19,8 +19,18 @@ import {
 import Image from "next/image";
 import { Progress } from "@heroui/progress";
 import DonationCard from "../donation/donation-card";
+import { useQuery } from "@tanstack/react-query";
+import { Donation } from "@/types";
+import axios from "axios";
 
 const Home = () => {
+  const { data } = useQuery({
+    queryKey: ["donations"],
+    queryFn: async (): Promise<Donation[]> => {
+      return await axios.get("/api/donation").then((res) => res.data.data);
+    },
+  });
+
   const menu = [
     { icon: BanknotesIcon, label: "Zakat" },
     { icon: GiftIcon, label: "Infaq" },
@@ -106,8 +116,8 @@ const Home = () => {
           </Button>
         </div>
         <div className="flex flex-col gap-5">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <DonationCard key={"donation-latest-" + i} />
+          {data?.map((item) => (
+            <DonationCard data={item} key={"donation-latest-" + item.id} />
           ))}
         </div>
       </section>
